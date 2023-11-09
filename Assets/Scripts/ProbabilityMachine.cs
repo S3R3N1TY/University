@@ -26,7 +26,7 @@ public class ProbabilityMachine
         MyMatrix parentRotationY = MyMatrix.CreateRotationY(_Rotation.Y);
         MyMatrix parentRotationZ = MyMatrix.CreateRotationZ(_Rotation.Z);
         MyMatrix parentPosition = MyMatrix.CreateTranslation(_Position);
-        MyMatrix parentTransform = parentPosition.Multiply(parentRotationX.Multiply(parentRotationY.Multiply(parentRotationZ.Multiply(parentScale))));
+        MyMatrix parentTransform = parentPosition.Multiply(parentRotationY.Multiply(parentRotationX.Multiply(parentRotationZ.Multiply(parentScale))));
 
         RenderProbabilityMachine(parentTransform);
     }
@@ -75,114 +75,137 @@ public class ProbabilityMachine
 
     private void RenderPegsRow1(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 1.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -49f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -36.75f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -24.5f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -12.25f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 0f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 12.25f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 24.5f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 36.75f, 57.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 1.9", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 49f, 57.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -49f;
+
+        for (int i = 1; i <= 9; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 1.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 57.25f, 0f);
+        }
     }
 
     private void RenderPegsRow2(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 2.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -42.875f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -30.625f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -18.375f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -6.125f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 6.125f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 18.375f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 30.625f, 52.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 2.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 42.875f, 52.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -42.875f;
+
+        for (int i = 1; i <= 8; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 2.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 52.25f, 0f);
+        }
     }
 
     private void RenderPegsRow3(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 3.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -49f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -36.75f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -24.5f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -12.25f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 0f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 12.25f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 24.5f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 36.75f, 47.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 3.9", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 49f, 47.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -49f;
+
+        for (int i = 1; i <= 9; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 3.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 47.25f, 0f);
+        }
     }
 
     private void RenderPegsRow4(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 4.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -42.875f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -30.625f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -18.375f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -6.125f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 6.125f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 18.375f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 30.625f, 42.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 4.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 42.875f, 42.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -42.875f;
+
+        for (int i = 1; i <= 8; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 4.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 42.25f, 0f);
+        }
     }
 
     private void RenderPegsRow5(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 5.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -49f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -36.75f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -24.5f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -12.25f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 0f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 12.25f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 24.5f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 36.75f, 37.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 5.9", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 49f, 37.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -49f;
+
+        for (int i = 1; i <= 9; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 5.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 37.25f, 0f);
+        }
     }
 
     private void RenderPegsRow6(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 6.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -42.875f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -30.625f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -18.375f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -6.125f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 6.125f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 18.375f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 30.625f, 32.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 6.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 42.875f, 32.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -42.875f;
+
+        for (int i = 1; i <= 8; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 6.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 32.25f, 0f);
+        }
     }
 
     private void RenderPegsRow7(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 7.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -49f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -36.75f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -24.5f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -12.25f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 0f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 12.25f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 24.5f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 36.75f, 27.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 7.9", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 49f, 27.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -49f;
+
+        for (int i = 1; i <= 9; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 7.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 27.25f, 0f);
+        }
     }
 
     private void RenderPegsRow8(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Peg 8.1", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -42.875f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.2", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -30.625f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.3", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -18.375f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.4", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, -6.125f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.5", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 6.125f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.6", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 18.375f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.7", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 30.625f, 22.25f, 0f);
-        GenerateShape(pParentTransform, "Peg 8.8", PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f, (float)Math.PI / 2, 0f, 0f, 42.875f, 22.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -42.875f;
+
+        for (int i = 1; i <= 8; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string pegName = $"Peg 8.{i}";
+
+            GenerateShape(pParentTransform, pegName, PrimitiveType.Cylinder, Color.red, 2f, 5f, 2f,
+                (float)Math.PI / 2, 0f, 0f, currentAngle, 22.25f, 0f);
+        }
     }
 
     private void RenderDividers(MyMatrix pParentTransform)
     {
-        GenerateShape(pParentTransform, "Divider1", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, -42.875f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider2", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, -30.625f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider3", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, -18.375f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider4", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, -6.125f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider5", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, 6.125f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider6", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, 18.375f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider7", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, 30.625f, 12.25f, 0f);
-        GenerateShape(pParentTransform, "Divider8", PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f, 0f, 0f, (float)Math.PI / 2, 42.875f, 12.25f, 0f);
+        float angleIncrement = 12.25f;
+        float startingAngle = -42.875f;
+
+        for (int i = 1; i <= 8; i++)
+        {
+            float currentAngle = startingAngle + (i - 1) * angleIncrement;
+            string dividerName = $"Divider{i}";
+
+            GenerateShape(pParentTransform, dividerName, PrimitiveType.Cube, Color.red, 20f, 2.25f, 10f,
+                0f, 0f, (float)Math.PI / 2, currentAngle, 12.25f, 0f);
+        }
     }
 
     private void GenerateShape(MyMatrix pParentTransform, string gameObjectName, PrimitiveType shape, Color color,
